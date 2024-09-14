@@ -2,7 +2,7 @@
 
 Luego de compilar, ejecutar el programa de la siguiente forma:
 
-`./main R N ARCHIVO`
+`./autcel R N ARCHIVO`
 
 Donde 
 
