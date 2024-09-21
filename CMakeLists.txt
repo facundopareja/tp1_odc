@@ -6,4 +6,6 @@ add_executable(autcel main.c
         pbm_writer.c
         pbm_writer.h
         constants.c
-        constants.h)
+        constants.h
+        input_parser.c
+        input_parser.h)

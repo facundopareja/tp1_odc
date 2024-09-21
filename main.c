@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "pbm_writer.h"
 #include "constants.h"
+#include "input_parser.h"
 
 unsigned char proximo(unsigned char** state_matrix, unsigned int i, unsigned int j, unsigned char regla, unsigned int N) {
-    // correct method signature
     unsigned char left_neighbor;
     unsigned char cell = state_matrix[i][j];
     unsigned char right_neighbor;
@@ -39,6 +40,7 @@ int load_initial_state(unsigned char** state_matrix, char* filename, unsigned in
         printf("Error reading file\n");
         return EXIT_FAILURE;
     }
+    printf("Reading initial state...\n");
     char row[cell_number+1];
     fgets(row, cell_number+2, file_pointer);
     if (!feof(file_pointer)) {
@@ -54,20 +56,15 @@ int load_initial_state(unsigned char** state_matrix, char* filename, unsigned in
 }
 
 int main(int argc, char* argv[]) {
-    if (argc < 4) {
-        printf("Insufficient key arguments");
-        return EXIT_SUCCESS;
-    }
-
-    // falta chequear flags
-
+    if (parse_input(argc, argv) == EXIT_FAILURE) {
+        return EXIT_FAILURE;
+    };
     const unsigned int rule_number = atoi(argv[1]);
     if (rule_number > MAX_RULE_NUMBER) {
         printf("Invalid rule number\n");
         return EXIT_SUCCESS;
     }
     const unsigned int cell_number = atoi(argv[2]);
-
     char* filename = argv[3];
     unsigned char** state_matrix = calloc(cell_number, sizeof(unsigned char*));
     if (state_matrix == NULL) {
@@ -81,19 +78,18 @@ int main(int argc, char* argv[]) {
     if (load_initial_state(state_matrix, filename, cell_number) != EXIT_SUCCESS) {
         return EXIT_SUCCESS;
     };
-
+    char* pbm_filename = argv[3];
+    if (argc == 6) {
+        pbm_filename = argv[5];
+    }
+    strcat(pbm_filename, ".pbm");
     for (int i = 0; i < cell_number -1; i++) {
          for (int j = 0; j < cell_number; j++) {
              state_matrix[i+1][j] = proximo(state_matrix, i, j, rule_number, cell_number);
          }
-        printf("New state is:\n");
-        print_state(state_matrix, cell_number, i+1);
     }
-    if (write_to_pbm(state_matrix, cell_number) != 0) {
+    if (write_to_pbm(state_matrix, cell_number, pbm_filename) != 0) {
         printf("Error creating file");
-    }
-    else {
-        printf("Grabando archivo...");
     }
     free(state_matrix);
     return EXIT_SUCCESS;

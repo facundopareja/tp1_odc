@@ -12,17 +12,16 @@ void draw_row(unsigned char** state_matrix, FILE* file_pointer, unsigned int cel
 
 }
 
-int write_to_pbm(unsigned char** state_matrix, unsigned int cell_number) {
-    char* filename = "file.pbm";
+int write_to_pbm(unsigned char** state_matrix, unsigned int cell_number, char* pbm_filename) {
     FILE* file_pointer;
-    file_pointer = fopen(filename, "w");
-    // checking if the file is created
+    file_pointer = fopen(pbm_filename, "w");
     if (file_pointer == NULL) {
         printf("Error opening file for writing");
-        return 1;
+        return EXIT_FAILURE;
     }
+    printf("Writing %s", pbm_filename);
     fprintf(file_pointer, "P1\n");
-    fprintf(file_pointer, "# %s\n", filename);
+    fprintf(file_pointer, "# %s\n", pbm_filename);
     fprintf(file_pointer, "%d %d\n", (int) 2*cell_number, (int) 2 * cell_number);
     for (int i = 0; i < cell_number; i++) {
         draw_row(state_matrix, file_pointer, cell_number, i);

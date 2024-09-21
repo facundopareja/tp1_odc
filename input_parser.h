@@ -1,0 +1,6 @@
+#ifndef TP0_ORGACOMPUTADORAS_INPUT_PARSER_H
+#define TP0_ORGACOMPUTADORAS_INPUT_PARSER_H
+
+int parse_input(int argc, char* argv[]);
+
+#endif //TP0_ORGACOMPUTADORAS_INPUT_PARSER_H
