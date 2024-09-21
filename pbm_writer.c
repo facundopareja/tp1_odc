@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void draw_row(unsigned char** state_matrix, FILE* file_pointer, unsigned int cell_number, unsigned int i) {
+void write_row(unsigned char** state_matrix, FILE* file_pointer, unsigned int cell_number, unsigned int i) {
     for (int j = 0; j < cell_number; j++) {
         fprintf(file_pointer, "%d ", state_matrix[i][j]);
         fprintf(file_pointer, "%d", state_matrix[i][j]);
@@ -16,16 +16,16 @@ int write_to_pbm(unsigned char** state_matrix, unsigned int cell_number, char* p
     FILE* file_pointer;
     file_pointer = fopen(pbm_filename, "w");
     if (file_pointer == NULL) {
-        printf("Error opening file for writing");
+        fprintf(stderr, "Error opening file for writing");
         return EXIT_FAILURE;
     }
-    printf("Writing %s", pbm_filename);
+    printf("Writing to %s", pbm_filename);
     fprintf(file_pointer, "P1\n");
     fprintf(file_pointer, "# %s\n", pbm_filename);
     fprintf(file_pointer, "%d %d\n", (int) 2*cell_number, (int) 2 * cell_number);
     for (int i = 0; i < cell_number; i++) {
-        draw_row(state_matrix, file_pointer, cell_number, i);
-        draw_row(state_matrix, file_pointer, cell_number, i);
+        write_row(state_matrix, file_pointer, cell_number, i);
+        write_row(state_matrix, file_pointer, cell_number, i);
         fprintf(file_pointer, "\n");
     }
     printf("\n");

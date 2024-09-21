@@ -2,5 +2,7 @@
 #define TP0_ORGACOMPUTADORAS_CONSTANTS_H
 
 extern const int MAX_RULE_NUMBER;
+extern const char* HELP_MESSAGE;
+extern const char* VERSION_MESSAGE;
 
 #endif //TP0_ORGACOMPUTADORAS_CONSTANTS_H
