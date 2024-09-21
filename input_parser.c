@@ -45,4 +45,8 @@ int parse_input(int argc, char* argv[]) {
             return EXIT_SUCCESS;
         }
     }
+    else {
+        printf("Invalid program arguments");
+    }
+    return EXIT_FAILURE;
 }
