@@ -1,15 +1,29 @@
 # TP0 - Organizacion de Datos
 
-Luego de compilar, ejecutar el programa de la siguiente forma:
+### Compilacion
 
-`./autcel R N ARCHIVO`
+Se ofrece un Makefile para compilar el programa
 
-Donde 
+`make`
+
+El programa se encontrara en **bin/autcel**
+
+### Ejecucion
 
 ```
-R es el numero de regla usado para definir el automata 
-
-N es la cantidad de celdas y evoluciones del sistema
-
-ARCHIVO es el nombre del archivo que contiene el estado inicial
+Uso:
+    autcel -h
+    autcel -V
+    autcel R N inputfile [-o outputprefix]
+Opciones:
+    -h, --help Imprime este mensaje.
+    -V, --version Da la versión del programa.
+    -o Prefijo de los archivos de salida.
+Ejemplos:
+    autcel 30 80 inicial -o evolucion
+    Calcula la evolución del autómata "Regla 30",
+    en un mundo unidimensional de 80 celdas, por 80 iteraciones.
+    El archivo de salida se llamará evolucion.pbm.
+    Si no se da un prefijo para los archivos de salida,
+    el prefijo será el nombre del archivo de entrada.
 ```
