@@ -15,7 +15,7 @@ Con la VM levantada y corriendo ejecutar
 
 `ssh -R 5555:localhost:22 host@iphost`
 
-Situado en tp1_odc/src en la maquina host
+Situado en la carpeta del proyecto en la maquina host
 
 `scp -P 5555 -r src root@localhost:/tmp`
 
