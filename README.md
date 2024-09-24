@@ -6,7 +6,8 @@ Se ofrece un Makefile para compilar el programa
 
 `make`
 
-El programa se encontrara en **bin/autcel**
+El programa se encontrara en **bin/autcel** junto con el archivo inicial necesario para obtener las imagenes pedidas
+en el enunciado.
 
 ### Compilacion QEMU
 
@@ -17,6 +18,18 @@ Con la VM levantada y corriendo ejecutar
 Situado en tp1_odc/src en la maquina host
 
 `scp -P 5555 -r src root@localhost:/tmp`
+
+Abandonar la maquina host en la VM y ejecutar
+
+```
+apt-get install make
+cd tmp/src
+make
+cd bin
+```
+
+Y el programa ya esta listo para ejecutar.
+
 
 ### Ejecucion
 
