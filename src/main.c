@@ -8,8 +8,9 @@
 
 
 unsigned char next_state(const unsigned char* state_matrix,
-                        const unsigned int i, const unsigned int j,
-                        unsigned char regla, const unsigned int N) {
+                         const unsigned int i, const unsigned int j,
+                         unsigned char regla, const unsigned int N)
+{
     unsigned char left_neighbor;
     const unsigned char cell = state_matrix[i * N + j];
     unsigned char right_neighbor;
@@ -29,7 +30,9 @@ unsigned char next_state(const unsigned char* state_matrix,
     return (regla & ( 1 << bit_number )) >> bit_number;
 }
 
-int load_initial_state(unsigned char* state_matrix, const char* filename, unsigned int cell_number) {
+int load_initial_state(unsigned char* state_matrix, const char* filename,
+                       const unsigned int cell_number)
+{
     FILE *file_pointer = fopen(filename, "r");
 
     if (file_pointer == NULL) {
@@ -38,7 +41,7 @@ int load_initial_state(unsigned char* state_matrix, const char* filename, unsign
     }
     printf("Reading initial state...\n");
     char row[cell_number+1];
-    fgets(row, cell_number+2, file_pointer);
+    fgets(row, cell_number + 2, file_pointer);
     if (!feof(file_pointer)) {
         fprintf(stderr,"Cell number different from specified in input file\n");
         return EXIT_FAILURE;
@@ -49,7 +52,8 @@ int load_initial_state(unsigned char* state_matrix, const char* filename, unsign
     return EXIT_SUCCESS;
 }
 
-int main(int argc, char* argv[]) {
+int main(const int argc, char* argv[])
+{
     if (parse_input(argc, argv) == EXIT_FAILURE) {
         return EXIT_FAILURE;
     }

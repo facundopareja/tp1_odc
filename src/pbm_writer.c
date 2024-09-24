@@ -21,7 +21,7 @@ int write_to_pbm(const unsigned char* state_matrix, unsigned int cell_number, ch
     printf("Writing to %s", pbm_filename);
     fprintf(file_pointer, "P1\n");
     fprintf(file_pointer, "# %s\n", pbm_filename);
-    fprintf(file_pointer, "%d %d\n", (int) 2*cell_number, (int) 2 * cell_number);
+    fprintf(file_pointer, "%d %d\n", 2 * cell_number, 2 * cell_number);
     for (int i = 0; i < cell_number; i++) {
         write_row(state_matrix, file_pointer, cell_number, i);
         write_row(state_matrix, file_pointer, cell_number, i);
