@@ -1,12 +1,22 @@
 # TP0 - Organizacion de Datos
 
-### Compilacion
+### Compilacion local
 
 Se ofrece un Makefile para compilar el programa
 
 `make`
 
 El programa se encontrara en **bin/autcel**
+
+### Compilacion QEMU
+
+Con la VM levantada y corriendo ejecutar
+
+`ssh -R 5555:localhost:22 host@iphost`
+
+Situado en tp1_odc/src en la maquina host
+
+`scp -P 5555 -r src root@localhost:/tmp`
 
 ### Ejecucion
 

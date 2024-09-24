@@ -27,8 +27,7 @@ constants.o: constants.c constants.h
 
 # CLEAR DEPLOY DIR
 clear:
-	rm -rf $(DEPLOY_DIR)
-	mkdir $(DEPLOY_DIR)
+	mkdir -p $(DEPLOY_DIR)
 	rm -rf $(OUT_DIR)
 	mkdir $(OUT_DIR)
 
