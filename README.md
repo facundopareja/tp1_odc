@@ -23,6 +23,7 @@ Abandonar la maquina host en la VM y ejecutar
 
 ```
 apt-get install make
+cd ..
 cd tmp/src
 make
 cd bin
