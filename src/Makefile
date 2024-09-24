@@ -3,7 +3,6 @@ CFLAGS:=-Wall -g -O0
 LFLAGS:=-lm
 PROG_EXEC:=autcel
 DEPLOY_DIR:=bin
-OUT_DIR:=out
 
 # RUN ALL TASKS
 all: clear $(PROG_EXEC) remove_object_files
@@ -28,8 +27,6 @@ constants.o: constants.c constants.h
 # CLEAR DEPLOY DIR
 clear:
 	mkdir -p $(DEPLOY_DIR)
-	rm -rf $(OUT_DIR)
-	mkdir $(OUT_DIR)
 
 # REMOVE OBJECT FILES
 remove_object_files:
