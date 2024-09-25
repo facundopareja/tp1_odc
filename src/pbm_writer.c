@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 void write_row(const unsigned char* state_matrix, FILE* file_pointer, const unsigned int cell_number, unsigned int i) {
-    for (unsigned int j = (i * cell_number); j < (i * cell_number) + cell_number; j++) {
+    for (unsigned int j = (i * cell_number); j < (i + 1) * cell_number ; j++) {
         fprintf(file_pointer, "%d ", state_matrix[j]);
         fprintf(file_pointer, "%d", state_matrix[j]);
         if (j != cell_number-1) {
