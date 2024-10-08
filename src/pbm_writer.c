@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 void write_row(const unsigned char* state_matrix, FILE* file_pointer, const unsigned int cell_number, unsigned int i) {
-    for (unsigned int j = (i * cell_number); j < (i + 1) * cell_number ; j++) {
+    for (unsigned int j = (i * cell_number); j < (i + 1) * cell_number; j++) {
         fprintf(file_pointer, "%d ", state_matrix[j]);
         fprintf(file_pointer, "%d", state_matrix[j]);
         if (j != cell_number-1) {
@@ -24,6 +24,7 @@ int write_to_pbm(const unsigned char* state_matrix, unsigned int cell_number, ch
     fprintf(file_pointer, "%d %d\n", 2 * cell_number, 2 * cell_number);
     for (int i = 0; i < cell_number; i++) {
         write_row(state_matrix, file_pointer, cell_number, i);
+        fprintf(file_pointer, "\n");
         write_row(state_matrix, file_pointer, cell_number, i);
         fprintf(file_pointer, "\n");
     }
